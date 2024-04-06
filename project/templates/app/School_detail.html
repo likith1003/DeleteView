@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <center>
+        <h1>The Name of the School is {{schools.sname}}</h1>
+        <h1>The Principal of the school is {{schools.principal}}</h1>
+        <h1>The contact Number of the school is {{schools.contact}}</h1>
+        {% if schools.students.all|length %}
+              
+            
+        <table border="3px">
+            <tr>
+                <th>Student Name</th>
+                <th>Student Age</th>
+            </tr>
+            
+            {% for st in schools.students.all %}
+              <tr>
+                <td>{{st.stdname}}</td>
+                <td>{{st.stdage}}</td>
+              </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <h1>No Students yet</h1>
+        {% endif %}
+        <a href="update{{schools.pk}}" class="btn btn-secondary">Update School</a>
+        <a href="delete{{schools.pk}}" class="btn btn-danger">Delete School</a>
+        
+    </center>
+</body>
+</html>
